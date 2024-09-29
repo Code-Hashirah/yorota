@@ -1,24 +1,18 @@
 <?php
 include('db.php');
-session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
-    $password = $_POST['password'];
+    $email = $_POST['email'];
+    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
-    $sql = "SELECT * FROM admin_users WHERE username = '$username'";
-    $result = $conn->query($sql);
+    $sql = "INSERT INTO admin_users (username, email, password) VALUES ('$username', '$email', '$password')";
 
-    if ($result->num_rows > 0) {
-        $admin = $result->fetch_assoc();
-        if (password_verify($password, $admin['password'])) {
-            $_SESSION['admin_username'] = $admin['username'];
-            header("Location: dashboard.php");
-        } else {
-            echo "Invalid password.";
-        }
+    if ($conn->query($sql) === TRUE) {
+        echo "Signup successful!";
+        header("Location: login.php"); // Redirect to login
     } else {
-        echo "No admin found with that username.";
+        echo "Error: " . $sql . "<br>" . $conn->error;
     }
 }
 ?>
@@ -26,22 +20,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin Login</title>
+    <title>Admin Signup</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="container">
-    <h2 class="mt-5">Admin Login</h2>
+    <h2 class="mt-5">Admin Signup</h2>
     <form method="POST" action="">
         <div class="mb-3">
             <label for="username" class="form-label">Username</label>
             <input type="text" class="form-control" id="username" name="username" required>
         </div>
         <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="mb-3">
             <label for="password" class="form-label">Password</label>
             <input type="password" class="form-control" id="password" name="password" required>
         </div>
-        <button type="submit" class="btn btn-primary">Login</button>
+        <button type="submit" class="btn btn-primary">Sign Up</button>
     </form>
 </div>
 </body>

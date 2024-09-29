@@ -1,0 +1,51 @@
+/* #1a0000 */
+#header{
+    width: 100%;
+    position: relative;
+    /* height: 100vh; */
+    height: 550px ;
+    overflow: hidden;
+}
+
+#nav{
+ background-color: rgba(5, 72, 138, 0.3);
+    /* position: absolute; */
+    left: 0;
+    top: 0;
+}
+
+.list{
+    transition: transform 2s, border 2s ease;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 10px;
+    margin-right: 10px;
+}
+.link-list{
+    color: white;
+    text-decoration: none;
+    font-family:dancing script ;
+    font-size: 20px;
+  
+}
+.list:hover{
+transform: scale(1.1);
+border: 2px solid rgb(74, 80, 80);
+}
+
+@media screen and (max-width:660px) {
+    #olist{
+        flex-direction: column;
+        justify-content: flex-start;
+        justify-self: left;
+        left: 0;
+    }
+    .list{
+        background-color: rgba(5, 72, 138, 0.3);
+        background-color: transparent;
+    }
+ 
+    .link-list{
+        border: 2px solid white;
+    }
+}

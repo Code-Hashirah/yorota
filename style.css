@@ -1,0 +1,172 @@
+body {
+    padding-top: 56px;
+}
+
+.hero-section {
+    background-color: #9d9fa1;
+    padding:0;
+}
+
+.features-section .card {
+    margin-bottom: 10px;
+}
+
+#sidebar-wrapper {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    padding-left: 250px;
+}
+
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+h1, h2, h3, h4 {
+    color: #003366; /* Dark Blue */
+}
+
+a {
+    color: #003366; /* Blue Links */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Form Styles */
+form {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 2px solid #FFD700; /* Yellow Border */
+    background-color: #f1f1f1;
+    border-radius: 8px;
+}
+
+form input[type="text"], 
+form input[type="file"],
+form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+form input[type="text"], form input[type="file"] {
+    border: 1px solid #003366; /* Blue border */
+}
+
+form input[type="submit"] {
+    background-color: #003366; /* Dark Blue */
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+form input[type="submit"]:hover {
+    background-color: #FFD700; /* Yellow on hover */
+    color: #003366;
+}
+
+/* Table Styles */
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #003366; /* Blue Border */
+}
+
+table th {
+    background-color: #003366; /* Dark Blue */
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background-color: #f1f1f1;
+}
+
+table tr:hover {
+    background-color: #FFD700; /* Yellow highlight on hover */
+}
+
+/* Button Styles */
+button, input[type="button"] {
+    background-color: #003366; /* Dark Blue */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover, input[type="button"]:hover {
+    background-color: #FFD700; /* Yellow */
+    color: #003366; /* Blue */
+}
+
+/* Image Styles */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Form Container */
+.form-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 2px solid #003366; /* Blue Border */
+    border-radius: 8px;
+}
+
+/* QR Code Display */
+.qr-code img {
+    border: 2px solid #FFD700; /* Yellow Border */
+    padding: 5px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+/* Payment Status */
+.payment-status {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.payment-status.not-paid {
+    color: red;
+}
+
+.payment-status.paid {
+    color: green;
+}
+

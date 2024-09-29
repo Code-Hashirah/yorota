@@ -1,5 +1,8 @@
 <?php
 include('db.php');
+require_once "header.php";
+// require_once "db.php";
+require_once "navbar.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];

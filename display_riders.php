@@ -1,6 +1,8 @@
 <?php
-include('db.php');
-require('qrcode/lib/qrlib.php');
+  require_once "header.php";
+  require_once "db.php";
+  require_once "navbar.php";
+require('qrcodes/lib/qrlib.php');
 
 $sql = "SELECT * FROM tricycle_riders";
 $result = $conn->query($sql);
