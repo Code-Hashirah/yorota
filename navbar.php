@@ -11,19 +11,11 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
         <li class="list"><a class="nav-link" href="index.php">Home</a></li>
-                <li class="list"><a class="nav-link" href="labourers.php">Generate QR</a></li>
+                <li class="list"><a class="nav-link" href="qr.php">Generate QR</a></li>
             <li class="list"><a class="nav-link" href="about.php">About us</a></li>
-            <?php if(!empty($_SESSION['Phone'])){ ?>
-                <li class="list"><a class="nav-link" href="logout.php">Payment</a></li>
-        <?php     } ?>
-        <?php if(empty($_SESSION['Phone'])){ ?>
-            <li class="nav-item">
-                <a class="nav-link" href="signIn.php">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="signUp.php">Register</a>
-            </li>
-        <?php   } ?>
+            
+                <li class="list"><a class="nav-link" href="payment.php">Payment</a></li>
+
     
         </ul>
         <span class="rounded-2 p-2 text-info d-flex">

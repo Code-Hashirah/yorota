@@ -11,7 +11,7 @@ $title="Home Page";
     <div class="container">
         <h1 class="display-4">Welcome to <bold class="text-success display-1">T</bold>ri  <bold class="text-warning display-1">C</bold>ycle</h1>
         <p class="lead">Tri Cycle Transport Management Platform.</p>
-        <a href="signUp.php" class="btn btn-primary btn-lg">Get QR <small>code</small></a>
+        <a href="qr.php" class="btn btn-primary btn-lg">Get QR <small>code</small></a>
     </div>
 </section>
 
@@ -55,7 +55,7 @@ $title="Home Page";
 <section class="features-section py-5">
     <div class="container">
         <div class="row">
-            <a href="proceed.php" class="col-md-4 text-decoration-none">
+            <a href="payment.php" class="col-md-4 text-decoration-none">
             <div>
                 <div class="card">
                     <div class="card-body">
@@ -68,7 +68,7 @@ $title="Home Page";
             </div>
             </a>
             
-            <a href="proceed.php" class="col-md-4 text-decoration-none">
+            <a href="qr.php" class="col-md-4 text-decoration-none">
                 <div>
                 <div class="card">
                     <div class="card-body">
@@ -80,7 +80,7 @@ $title="Home Page";
             </div>
         </a>
             
-            <a href="proceed.php" class="col-md-4 text-decoration-none">
+            <a href="payment.php" class="col-md-4 text-decoration-none">
             <div>
                 <div class="card">
                     <div class="card-body">

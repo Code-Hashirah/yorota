@@ -1,6 +1,9 @@
 <?php
 include('db.php');
 require_once "header.php";
+$title="My QR Code";
+require_once "navbar.php";
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $input = $_POST['input'];
     

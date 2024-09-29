@@ -1,48 +1,45 @@
 <?php
-include('db.php');
-require_once "header.php";
+require_once "db.php";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $input = $_POST['input'];
+if (isset($_GET['chassis_number'])) {
+    $chassis_number = $_GET['chassis_number'];
 
-    // Search by chassis number or plate number
-    $sql = "SELECT * FROM tricycle_riders WHERE chassis_number = '$input' OR plate_number = '$input'";
+    // Fetch rider details from the database
+    $sql = "SELECT * FROM tricycle_riders WHERE chassis_number = '$chassis_number'";
     $result = $conn->query($sql);
-
+    
     if ($result->num_rows > 0) {
         $rider = $result->fetch_assoc();
+
+        // Display rider details
+        echo "<h2>Rider Details</h2>";
+        echo "<p><strong>Name:</strong> " . $rider['name'] . "</p>";
+        echo "<p><strong>Plate Number:</strong> " . $rider['plate_number'] . "</p>";
+        echo "<p><strong>Chassis Number:</strong> " . $rider['chassis_number'] . "</p>";
+        echo "<p><strong>Payment Status:</strong> " . $rider['payment_status'] . "</p>";
         
-        echo "<h3>Rider Information</h3>";
-        echo "Name: " . $rider['name'] . "<br>";
-        echo "Chassis Number: " . $rider['chassis_number'] . "<br>";
-        echo "Plate Number: " . $rider['plate_number'] . "<br>";
-        echo "Payment Status: " . $rider['payment_status'] . "<br>";
-        
-        if ($rider['payment_status'] === 'not_paid') {
-            echo "<h4>Make Payment</h4>";
-            echo "<form method='post' action='process_payment.php'>";
+        // Display rider picture
+        if (!empty($rider['picture'])) {
+            echo "<img src='uploads/" . $rider['picture'] . "' alt='Rider Picture' style='width:200px;height:200px;'><br>";
+        } else {
+            echo "<p>No picture available for this rider.</p>";
+        }
+
+        // Show payment button if not paid
+        if ($rider['payment_status'] == 'not_paid') {
+            echo "<h4>Payment Status: Not Paid</h4>";
+            // Display payment button linking to process_payment.php
+            echo "<form action='process_payment.php' method='POST'>";
             echo "<input type='hidden' name='chassis_number' value='" . $rider['chassis_number'] . "'>";
-            echo "<input type='submit' value='Pay Now'>";
+            echo "<input type='submit' value='Proceed to Payment'>";
             echo "</form>";
         } else {
-            echo "<h4>Payment already made for this month.</h4>";
+            echo "<h4>Payment Status: Paid</h4>";
         }
     } else {
-        echo "No rider found with this chassis or plate number.";
+        echo "No rider found with this chassis number.";
     }
+} else {
+    echo "No chassis number provided.";
 }
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Payment</title>
-</head>
-<body>
-    <h2>Check Payment Status</h2>
-    <form method="post">
-        Enter Chassis or Plate Number: <input type="text" name="input" required>
-        <input type="submit" value="Submit">
-    </form>
-</body>
-</html>
