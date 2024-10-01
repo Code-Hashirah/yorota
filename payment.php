@@ -39,7 +39,9 @@ if (isset($_GET['chassis_number'])) {
     } else {
         echo "No rider found with this chassis number.";
     }
-} else {
+}
+ else {
     echo "No chassis number provided.";
 }
+
 ?>

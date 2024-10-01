@@ -30,13 +30,13 @@ $title="Home Page";
   <!-- The slideshow/carousel -->
   <div class="carousel-inner">
     <div class="carousel-item active">
-    <img src="assets/farm1.webp" alt="farm1" class="d-block img w-100 h-25">
+    <img src="assets/ride1.webp" alt="rider1" class="d-block img w-100 h-25">
     </div>
     <div class="carousel-item">
-    <img src="assets/farm5.webp" alt="farm2" class="d-block img img w-100 h-25">
+    <img src="assets/ride2.webp" alt="rider2" class="d-block img img w-100 h-25">
     </div>
     <div class="carousel-item">
-    <img src="assets/farm6.webp" alt="farm3" class="d-block img img w-100 h-25">
+    <img src="assets/ride3.webp" alt="rider3" class="d-block img img w-100 h-25">
     </div>
   </div>
 
@@ -61,7 +61,7 @@ $title="Home Page";
                     <div class="card-body">
                         <!-- <button class="btn btn-primary">Bloom</button> -->
                         <h5 class="card-title">Easy Pay</h5>
-                        <img class="card-img top" src="assets/farm2.webp" alt="farm image">
+                        <img class="card-img top" src="assets/rider2.webp" alt="rider image">
                         <p class="card-text">Easy payment.</p>
                     </div>
                 </div>
@@ -73,7 +73,7 @@ $title="Home Page";
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Easy Tracking</h5>
-                        <img class="card-img top" src="assets/farm1.webp" alt="farm image">
+                        <img class="card-img top" src="assets/rider1.webp" alt="rider image">
                         <p class="card-text">Track Payment.</p>
                     </div>
                 </div>
@@ -85,7 +85,7 @@ $title="Home Page";
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Secure process</h5>
-                        <img class="card-img top" src="assets/farm4.webp" alt="farm image">
+                        <img class="card-img top" src="assets/rider4.webp" alt="rider image">
                         <p class="card-text">Ensure reliable payment process</p>
                     </div>
                 </div>
