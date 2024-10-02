@@ -8,6 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
     $phone_number = $_POST['phone_number'];
     $plate_number = $_POST['plate_number'];
+    $email=$_POST['Email'];
     $chassis_number = $_POST['chassis_number'];
 
     // Handle image upload
@@ -15,8 +16,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $target_file = $target_dir . basename($_FILES["picture"]["name"]);
     move_uploaded_file($_FILES["picture"]["tmp_name"], $target_file);
 
-    $sql = "INSERT INTO tricycle_riders (chassis_number, name, phone_number, plate_number, picture) 
-            VALUES ('$chassis_number', '$name', '$phone_number', '$plate_number', '$target_file')";
+    $sql = "INSERT INTO tricycle_riders (chassis_number, name, phone_number, plate_number, picture, email) 
+            VALUES ('$chassis_number', '$name', '$phone_number', '$plate_number', '$target_file', '$email')";
 
     if ($conn->query($sql) === TRUE) {
         echo "New rider added successfully!";
@@ -59,6 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         Name: <input type="text" name="name" required><br>
         Phone Number: <input type="text" name="phone_number" required><br>
         Plate Number: <input type="text" name="plate_number" required><br>
+        Email Address: <input type="email" name="Email" required><br>
         Chassis Number: <input type="text" name="chassis_number" required><br>
         Picture: <input type="file" name="picture" required><br>
         <input type="submit" value="Add Rider">

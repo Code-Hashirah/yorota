@@ -7,9 +7,9 @@ $title="Home Page";
 ?>
 
 <!-- Hero Section -->
-<section class="hero-section text-center">
+<section class="hero-section text-center mt-5">
     <div class="container">
-        <h1 class="display-4">Welcome to <bold class="text-success display-1">T</bold>ri  <bold class="text-warning display-1">C</bold>ycle</h1>
+        <h1 class="display-4">Welcome to <bold class="text-success display-1">T</bold>ri  <bold class="text-warning display-1">Y</bold>ota</h1>
         <p class="lead">Tri Cycle Transport Management Platform.</p>
         <a href="qr.php" class="btn btn-primary btn-lg">Get QR <small>code</small></a>
     </div>
@@ -61,7 +61,7 @@ $title="Home Page";
                     <div class="card-body">
                         <!-- <button class="btn btn-primary">Bloom</button> -->
                         <h5 class="card-title">Easy Pay</h5>
-                        <img class="card-img top" src="assets/rider2.webp" alt="rider image">
+                        <img class="card-img top" src="assets/ride5.webp" alt="rider image">
                         <p class="card-text">Easy payment.</p>
                     </div>
                 </div>
@@ -73,7 +73,7 @@ $title="Home Page";
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Easy Tracking</h5>
-                        <img class="card-img top" src="assets/rider1.webp" alt="rider image">
+                        <img class="card-img top" src="assets/ride6.webp" alt="rider image">
                         <p class="card-text">Track Payment.</p>
                     </div>
                 </div>
@@ -85,7 +85,7 @@ $title="Home Page";
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Secure process</h5>
-                        <img class="card-img top" src="assets/rider4.webp" alt="rider image">
+                        <img class="card-img top" src="assets/ride4.webp" alt="rider image">
                         <p class="card-text">Ensure reliable payment process</p>
                     </div>
                 </div>

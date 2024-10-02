@@ -1,47 +1,76 @@
 <?php
 require_once "db.php";
-
-if (isset($_GET['chassis_number'])) {
-    $chassis_number = $_GET['chassis_number'];
-
-    // Fetch rider details from the database
-    $sql = "SELECT * FROM tricycle_riders WHERE chassis_number = '$chassis_number'";
-    $result = $conn->query($sql);
-    
-    if ($result->num_rows > 0) {
-        $rider = $result->fetch_assoc();
-
-        // Display rider details
-        echo "<h2>Rider Details</h2>";
-        echo "<p><strong>Name:</strong> " . $rider['name'] . "</p>";
-        echo "<p><strong>Plate Number:</strong> " . $rider['plate_number'] . "</p>";
-        echo "<p><strong>Chassis Number:</strong> " . $rider['chassis_number'] . "</p>";
-        echo "<p><strong>Payment Status:</strong> " . $rider['payment_status'] . "</p>";
-        
-        // Display rider picture
-        if (!empty($rider['picture'])) {
-            echo "<img src='uploads/" . $rider['picture'] . "' alt='Rider Picture' style='width:200px;height:200px;'><br>";
-        } else {
-            echo "<p>No picture available for this rider.</p>";
-        }
-
-        // Show payment button if not paid
-        if ($rider['payment_status'] == 'not_paid') {
-            echo "<h4>Payment Status: Not Paid</h4>";
-            // Display payment button linking to process_payment.php
-            echo "<form action='process_payment.php' method='POST'>";
-            echo "<input type='hidden' name='chassis_number' value='" . $rider['chassis_number'] . "'>";
-            echo "<input type='submit' value='Proceed to Payment'>";
-            echo "</form>";
-        } else {
-            echo "<h4>Payment Status: Paid</h4>";
-        }
-    } else {
-        echo "No rider found with this chassis number.";
-    }
-}
- else {
-    echo "No chassis number provided.";
-}
-
+require_once "navbar.php";
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Hero Section -->
+<section class="hero-section text-center">
+    <div class="container">
+        <h1 class="display-4 mt-5">Welcome to <bold class="text-success display-1">T</bold>ri  <bold class="text-warning display-1">Y</bold>ota</h1>
+        <p class="lead">Tri Cycle Transport Management Platform.</p>
+        <a href="qr.php" class="btn btn-primary btn-lg">Get QR <small>code</small></a>
+    </div>
+</section>
+    <div class="container mt-5">
+        <!-- ******************************************************************************************* -->
+        <!-- Carousel -->
+        <div id="demo" class="carousel slide" data-bs-ride="carousel">
+        
+            <!-- Indicators/dots -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+            </div>
+        
+            <!-- The slideshow/carousel -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="assets/ride1.webp" alt="rider1" class="d-block img w-100 h-25">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/ride2.webp" alt="rider2" class="d-block img w-100 h-25">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/ride3.webp" alt="rider3" class="d-block img w-100 h-25">
+                </div>
+            </div>
+        
+            <!-- Left and right controls/icons -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+        <!-- End of carousel -->
+        <!-- ******************************************************************************************* -->
+
+        <!-- Payment Form -->
+        <h2 class="mt-4">Enter Chassis or Plate Number to Pay</h2>
+        <form action="process_payment.php" class="form active" method="POST">
+    <input type="text" name="chassis_number" placeholder="Enter your chassis number">
+    <input type="submit"class="btn btn-outline-info" value="Pay Now">
+</form>
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <?php
+require_once "footer.php";
+?>
+
+</body>
+</html>

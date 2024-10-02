@@ -15,7 +15,7 @@
     </ul>
     <div class="flist">
         <h5 class="foot-title">Address</h5>
-    <i id="addTitle" class="fas fa-location-arrow" aria-hidden="true"></i>: <span id="address">No 64 Al ansar housing estate, Gujba road Damaturu Yobe state</span>
+    <i id="addTitle" class="fas fa-location-arrow" aria-hidden="true"></i>: <span id="address">No Q64 FEDPODAM Damaturu Yobe state</span>
     </div>
     <div class="flist">
     <h5 class="foot-title">Contacts</h5>
@@ -28,7 +28,7 @@
 
     </div>
     <div class="flist">
-        <i class="fa fa-copyright text-white me-2" aria-hidden="true"></i><i class="text-white">CodeHashirah</i>
+        <i class="fa fa-copyright text-white me-2" aria-hidden="true"></i><i class="text-white small">CodeHashirah</i>
     </div>
 </footer>
 </body>
