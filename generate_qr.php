@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $rider = $result->fetch_assoc();
         
         // Generate a URL pointing directly to the payment.php page with chassis number as a query parameter
-        $ip_address = "127.0.0.1"; // Replace with your PC's IP address
+        $ip_address = "192.168.43.19"; // Replace with your PC's IP address
         $project_folder = "yorota"; // Change to your project folder name
         $qrData = "http://$ip_address/$project_folder/payment.php?chassis_number=" . $rider['chassis_number'];
 

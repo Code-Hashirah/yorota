@@ -58,9 +58,10 @@ require_once "navbar.php";
         <!-- ******************************************************************************************* -->
 
         <!-- Payment Form -->
-        <h2 class="mt-4">Enter Chassis or Plate Number to Pay</h2>
+        <h2 class="mt-4">Enter Chassis Number to Pay</h2>
         <form action="process_payment.php" class="form active" method="POST">
     <input type="text" name="chassis_number" placeholder="Enter your chassis number">
+    <input type="number" name="amount" placeholder="Enter amount">
     <input type="submit"class="btn btn-outline-info" value="Pay Now">
 </form>
 

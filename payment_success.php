@@ -2,7 +2,7 @@
 require_once "db.php";
 
 // Paystack Secret Key
-$paystack_secret_key = "your_secret_key";
+$paystack_secret_key = "sk_test_e4b2508dc7b8eb0714b707e26fd8e68d64601023";
 
 if (isset($_GET['reference'])) {
     $reference = $_GET['reference'];
