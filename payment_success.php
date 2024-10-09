@@ -23,19 +23,35 @@ if (isset($_GET['reference'])) {
     $response = curl_exec($ch);
     curl_close($ch);
 
+    // Decode the JSON response from Paystack
     $response_data = json_decode($response, true);
 
-    // If payment was successful, update the payment status in the database
-    if ($response_data['status'] && $response_data['data']['status'] == 'success') {
-        $sql = "UPDATE tricycle_riders SET payment_status = 'paid' WHERE chassis_number = '$reference'";
-        if ($conn->query($sql) === TRUE) {
-            echo "<h2>Payment successful!</h2>";
-            echo "<p>Thank you for your payment. Transaction reference: " . $reference . "</p>";
+    // Check if the request was successful
+    if ($response_data['status']) {
+        // Check if the payment was successful
+        if ($response_data['data']['status'] == 'success') {
+            $chassis_number = $reference; // Assuming reference matches chassis_number
+
+            // Securely update the payment status in the database using prepared statement
+            $stmt = $conn->prepare("UPDATE tricycle_riders SET payment_status = 'paid' WHERE chassis_number = ?");
+            $stmt->bind_param("s", $chassis_number);
+            
+            if ($stmt->execute()) {
+                echo "<h2>Payment successful!</h2>";
+                echo "<p>Thank you for your payment. Transaction reference: " . $reference . "</p>";
+            } else {
+                echo "<p>Payment successful, but failed to update the database. Error: " . $conn->error . "</p>";
+            }
+
+            $stmt->close();
         } else {
-            echo "<p>Payment successful, but failed to update the database.</p>";
+            echo "<h2>Payment failed or not verified.</h2>";
+            echo "<p>Status: " . $response_data['data']['status'] . "</p>";
         }
     } else {
-        echo "<h2>Payment failed or was not verified.</h2>";
+        echo "<h2>Failed to verify the transaction with Paystack.</h2>";
+        echo "<p>Error: " . $response_data['message'] . "</p>";
+        echo "<pre>" . print_r($response_data, true) . "</pre>"; // Print full response for debugging
     }
 } else {
     echo "<p>No payment reference found.</p>";
