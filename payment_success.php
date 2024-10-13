@@ -18,7 +18,10 @@ if (isset($_GET['reference'])) {
         "Authorization: Bearer $paystack_secret_key",
         "Cache-Control: no-cache",
     ));
-
+    echo "<pre>";
+    print_r($response_data);
+    echo "</pre>";
+    
     // Execute request and get response
     $response = curl_exec($ch);
     curl_close($ch);
