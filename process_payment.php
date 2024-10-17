@@ -20,7 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Rider's email (or generate a placeholder email if not available)
         $email = !empty($rider['email']) ? $rider['email'] : 'rider_' . $rider['chassis_number'] . '@example.com';
         $amount = $_POST['amount'] * 100; // Payment amount in kobo (Naira * 100)
-        $reference = $chassis_number. '_' . date('Ym'); // Unique transaction reference
+        $reference = $chassis_number;
+        // $reference = $chassis_number. '_' . date('Yhs'); // Unique transaction reference
 
         // Paystack API endpoint to initialize the transaction
         $url = "https://api.paystack.co/transaction/initialize";
@@ -30,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             'email' => $email,
             'amount' => $amount,
             'reference' => $reference,
-            'callback_url' => "localhost:8080/yorota/payment_success.php?reference={$reference}" // Update to match your domain
+            'callback_url' => "http://localhost:8080/yorota/payment_success.php?reference={$reference}" // Update to match your domain
         ];
 
         $fields_string = http_build_query($fields);

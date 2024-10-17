@@ -18,16 +18,33 @@ if (isset($_GET['reference'])) {
         "Authorization: Bearer $paystack_secret_key",
         "Cache-Control: no-cache",
     ));
-    echo "<pre>";
-    print_r($response_data);
-    echo "</pre>";
     
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    // Point cURL to the downloaded CA bundle
+    curl_setopt($ch, CURLOPT_CAINFO, __DIR__ . "/cacert.pem"); // Path to the downloaded cacert.pem
+
     // Execute request and get response
-    $response = curl_exec($ch);
+// Execute request and get response
+$response = curl_exec($ch);
+
+// Print raw cURL response for debugging
+if ($response === false) {
+    echo "<p>cURL Error: " . curl_error($ch) . "</p>";
+} else {
+    // echo "<pre>Raw cURL Response: " . $response . "</pre>";
+}
+// curl_close($ch);
+    
     curl_close($ch);
 
     // Decode the JSON response from Paystack
     $response_data = json_decode($response, true);
+
+    // Debugging: Print the decoded response data after decoding
+    echo "<pre class='text-success'>";
+    // print_r($response_data);
+    echo "</pre>";
 
     // Check if the request was successful
     if ($response_data['status']) {
@@ -41,7 +58,8 @@ if (isset($_GET['reference'])) {
             
             if ($stmt->execute()) {
                 echo "<h2>Payment successful!</h2>";
-                echo "<p>Thank you for your payment. Transaction reference: " . $reference . "</p>";
+                echo "<p class='text-success text-bg-warning'>Thank you for your payment. Transaction reference: " . $reference . "</p>";
+                header("location:index.php");
             } else {
                 echo "<p>Payment successful, but failed to update the database. Error: " . $conn->error . "</p>";
             }
